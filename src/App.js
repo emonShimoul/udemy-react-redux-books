@@ -6,11 +6,18 @@ function App() {
   const [books, setBooks] = useState([]);
 
   const createBook = (title) => {
-    console.log('New to add book with: ', title);
+    const updatedBooks = [...books,
+    {
+      id: Math.round(Math.random() * 9999),
+      title,
+    }];
+    setBooks(updatedBooks);
   };
 
   return (
     <div className="App">
+      <h1>App</h1>
+      {books.length}
       <BookCreate onCreate={createBook}></BookCreate>
     </div>
   );
