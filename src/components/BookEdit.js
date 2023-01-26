@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const BookEdit = () => {
+const BookEdit = ({ book }) => {
+    const [title, setTitle] = useState(book.title);
+
+    const handleChange = (e) => {
+        setTitle(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        console.log('New Title', title);
+    }
+
     return (
-        <div>
-
-        </div>
+        <form onSubmit={handleSubmit} className='book-edit'>
+            <label>Title</label>
+            <input className='input' value={title} onChange={handleChange} />
+            <button className='button is-primary'>
+                Save
+            </button>
+        </form>
     );
 };
 
